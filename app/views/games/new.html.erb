@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="header">
+    <h1>Welcome to a new game of "Guess the longest word"</h1>
+    <p>This is the game where we give you 10 letters and you have to make the longest word you can.</p>
+    <h3>Here are your letters for this round:</h3>
+  </div>
+  <div class="letters">
+    <ul class="list-group list-group-horizontal">
+      <% @letters.each do |letter| %>
+      <li class="list-group-item p-3 mb-2 bg-primary text-white alphabet-font"><%= letter %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="guess">
+  <h3>Write the longest word you can make with the previous 10 letters.</h3>
+    <form action="/score" method="post">
+      <div class="form-group">
+        <input class="form-control" name="attempt" aria-describedby="input">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    </form>
+  </div>
+</div>
